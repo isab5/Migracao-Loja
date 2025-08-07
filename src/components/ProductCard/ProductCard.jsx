@@ -3,8 +3,12 @@ import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ product }) {
     const displayedTitle = product.title ? product.title : "Título não informado";
-    const displayedDescription = product.description ? product.description : "Descrição não informada";
-    const displayedPrice = product.price ? `R$ ${product.price}` : "Preço não informado";
+    const displayedDescription = product.description
+        ? product.description
+        : "Descrição não informada";
+    const displayedPrice = product.price
+        ? `R$ ${product.price}`
+        : "Preço não informado";
     const displayedRating = product.rating ? product.rating : "Sem avaliações";
     const displayedStars = product.stars ? product.stars : 0;
 
@@ -17,7 +21,7 @@ export default function ProductCard({ product }) {
                         alt={displayedTitle}
                         width={180}
                         height={140}
-                        loading="lazy"  
+                        loading="lazy"
                         className={styles.image}
                     />
                 ) : (
@@ -32,7 +36,7 @@ export default function ProductCard({ product }) {
                 <p className={styles.description}>{displayedDescription}</p>
                 <div className={styles.rating}>
                     <span className={styles.stars}>
-                        {Array.from({ length: Math.floor(displayedRating) }).map(
+                        {Array.from({ length: Math.floor(displayedRating.count) }).map(
                             (_, i) => (
                                 <span key={i}>★</span>
                             )
@@ -40,8 +44,7 @@ export default function ProductCard({ product }) {
                         {displayedRating.count % 1 >= 0.5 && <span>½</span>}
                     </span>
                     <span className={styles.ratingValue}>
-                        {displayedRating.count} - {displayedRating.reviews}{" "}
-                        avaliações
+                        {displayedRating.count} - {displayedRating.reviews} avaliações
                     </span>
                 </div>
             </div>
