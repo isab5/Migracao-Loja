@@ -128,5 +128,8 @@ export const productsData = [
             reviews: 654
         },
         category: 'smartphones'
+    },
+    {
+        id: 11,
     }
 ];

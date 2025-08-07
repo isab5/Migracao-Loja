@@ -1,16 +1,16 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
-// Configurar fonte local baixada
+
 const Montserrat = localFont({
     src: [
         {
-            path: "../../public/fonts/Montserrat-Regular.ttf",
+            path: "../../public/fonts/CormorantGaramond-regular.ttf",
             weight: "400",
             style: "normal",
         },
         {
-            path: "../../public/fonts/Montserrat-Bold.ttf",
+            path: "../../public/fonts/CormorantGaramond-Bold.ttf",
             weight: "700",
             style: "normal",
         },

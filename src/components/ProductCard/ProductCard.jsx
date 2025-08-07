@@ -2,13 +2,19 @@ import Image from "next/image";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ product }) {
+    const displayedTitle = product.title ? product.title : "Título não informado";
+    const displayedDescription = product.description ? product.description : "Descrição não informada";
+    const displayedPrice = product.price ? `R$ ${product.price}` : "Preço não informado";
+    const displayedRating = product.rating ? product.rating : "Sem avaliações";
+    const displayedStars = product.stars ? product.stars : 0;
+
     return (
         <div className={styles.card}>
             <div className={styles.imageCard}>
                 {product.image ? (
                     <Image
                         src={product.image}
-                        alt={product.title}
+                        alt={displayedTitle}
                         width={180}
                         height={140}
                         loading="lazy"  
@@ -16,25 +22,25 @@ export default function ProductCard({ product }) {
                     />
                 ) : (
                     <div className={styles.placeholder}>
-                        <span>{product.title.split(" ")[0]}</span>
+                        <span>{displayedTitle.split(" ")[0]}</span>
                     </div>
                 )}
             </div>
             <div className={styles.info}>
-                <h2 className={styles.title}>{product.title}</h2>
-                <p className={styles.price}>{product.price}</p>
-                <p className={styles.description}>{product.description}</p>
+                <h2 className={styles.title}>{displayedTitle}</h2>
+                <p className={styles.price}>{displayedPrice}</p>
+                <p className={styles.description}>{displayedDescription}</p>
                 <div className={styles.rating}>
                     <span className={styles.stars}>
-                        {Array.from({ length: Math.floor(product.rating.count) }).map(
+                        {Array.from({ length: Math.floor(displayedRating) }).map(
                             (_, i) => (
                                 <span key={i}>★</span>
                             )
                         )}
-                        {product.rating.count % 1 >= 0.5 && <span>½</span>}
+                        {displayedRating.count % 1 >= 0.5 && <span>½</span>}
                     </span>
                     <span className={styles.ratingValue}>
-                        {product.rating.count.toFixed(1)} - {product.rating.reviews}{" "}
+                        {displayedRating.count} - {displayedRating.reviews}{" "}
                         avaliações
                     </span>
                 </div>
